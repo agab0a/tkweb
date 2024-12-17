@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.pf{
+    padding-left: 100px;
+}
+.pr{
+    padding-right: 100px;
+}
+.p100{
+    padding: 0 100px;
+}
+.color-wh{
+    opacity: 0.8;
+}
+.banner{
+    height: 50px;
+    font-family: Arial;
+    margin-top: 20px;
+}
+h1{
+    color: blue;
+    float: left;
+}
+.name{
+    color: rgb(157, 158, 158);
+}
+.tel{
+    color: red;
+}
+.icon{
+    float: right;
+    margin-top: -15px;
+}
+.fa-facebook{
+    color:blue ;
+}
+.fa-twitter{
+    color:rgb(37, 119, 241) ;
+}
+.fa-google-plus-g{
+    color: red;
+}
+.menu{
+    height: 30px;
+    background-color:#045199 ;
+}
+.menu li{
+    display: inline-block;
+    padding-right: 40px;
+}
+.menu li a{
+    line-height: 30px;
+    display: block;   
+    text-decoration: none;
+    color: white;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+}
+.menu li:hover a{
+    color: blue;
+    background-color: aliceblue;
+}
+.search{
+    float: right;
+    margin: -25px 100px;
+}
+.fa-search{
+    background-color:rgb(20, 108, 240) ;
+    color: white;
+    font-size: 14px;
+    padding: 2px;
+    margin-left: -4px;
+}
+.img1{
+    height: 300px;
+    width: 100%;
+}
+.content{
+    height: 230px;
+    display: flex;
+}
+h2{
+    color: blue;
+}
+.img2{
+    width: 100%;
+    height: 80px;
+}
+.but a{
+    text-decoration: none;
+    color: black;
+    padding: 2px 5px;
+}
+.footer{
+    height: 120px;
+    background-color:#0e4b8a ;
+    color: white;
+    display: flex;
+    font-size: 14px;
+    padding-top: 12px;
+}
+.f1{
+    flex: 1;
+}
+.f1>p{
+    margin-left: -15px;
+}
+.f2{
+    flex: 2;
+    text-align: right;
+}
