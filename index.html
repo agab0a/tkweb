@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script>
+          
+    function isValidEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+}
+function isValidName(name) {
+    const regex = /^[A-Z]{6,15}$/; 
+    return regex.test(name);
+}
+var isSubmit= true;
+function checkvalidate(){
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var password = document.getElementById("password").value;
+    var email = document.getElementById("email").value;
+    var remail = document.getElementById("remail").value;
+
+    var arraySpan= document.getElementsByTagName("span")
+    if(fname==""){
+        arraySpan[0].setAttribute("style","display:inline");
+        isSubmit=false;
+    }
+       
+    else{
+        if(isValidName(fname)){
+            arraySpan[0].setAttribute("style","display:none");
+            isSubmit=true;
+        }else{
+            arraySpan[0].innerText="first Name phải >= 9 và <=15 ký tự và không khoảng trắng"
+            arraySpan[0].setAttribute("style","display:inline");
+            isSubmit=false;
+        }
+        
+    }
+       
+    if(lname==""){
+        arraySpan[1].setAttribute("style","display:inline");
+        isSubmit=false;
+    }
+       
+    else{
+        if(isValidName(lname)){
+            arraySpan[1].setAttribute("style","display:none");
+            isSubmit=true;
+
+            
+        }else{
+            arraySpan[1].innerText="Last Name phải >= 9 và <=15 ký tự và không khoảng trắng"
+            arraySpan[1].setAttribute("style","display:inline");
+            isSubmit=false;
+
+            
+        }
+        
+    }
+       
+    if(password==""){
+        arraySpan[2].setAttribute("style","display:inline");
+        isSubmit=false;
+    }
+        
+    else{
+      
+        if(password.length<9){
+            arraySpan[2].innerText="password phải >= 9 ký tự"
+            arraySpan[2].setAttribute("style","display:inline");
+            isSubmit=false;
+        }else{
+            arraySpan[2].setAttribute("style","display:none");
+            isSubmit=true;
+        }
+    }
+       
+    if(email==""){
+        arraySpan[3].setAttribute("style","display:inline");
+        isSubmit=false;
+    }
+        
+    else{
+        if(isValidEmail(email)){
+            arraySpan[3].setAttribute("style","display:none");
+            isSubmit=true;
+        }else{
+            arraySpan[3].innerText="email sai định dạng"
+            arraySpan[3].setAttribute("style","display:inline");
+            isSubmit=false;
+        }
+    }
+       
+    if(remail==""){
+        arraySpan[4].setAttribute("style","display:inline");
+        isSubmit=false;
+    }
+       
+    else{
+        if(isValidEmail(remail)){
+            if(remail===email){
+                arraySpan[4].setAttribute("style","display:none");
+                isSubmit=true;
+            }else{
+                arraySpan[4].innerText="email chưa khớp"
+                arraySpan[4].setAttribute("style","display:inline");
+                isSubmit=false;
+            }
+            
+        }else{
+            isSubmit=false;
+            arraySpan[4].innerText="email sai định dạng"
+            arraySpan[4].setAttribute("style","display:inline");
+        }
+    }
+    
+    if (isSubmit) {
+        alert("Chúc mừng bạn đăng ký thành công!");
+    }
+   return isSubmit; 
+}
+
+    </script>
+</head>
+<body style=" display :flex;align-items: center;">
+    
+    <form action="" method="get"  onsubmit="return checkvalidate()">
+        <p style="font-size: 30px;text-align: center;">Đăng Ký</p>
+    <table >
+        <tr>
+            <td>FirstName:</td>
+            <td><input type="text" id="fname"></td>
+            <td><span>không được bỏ trống</span></td>
+        </tr>
+        <tr>
+            <td>LastName</td>
+            <td><input type="text" id="lname"></td>
+            <td><span>không được bỏ trống</span></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" id="password"></td>
+            <td><span>không được bỏ trống</span></td>
+        </tr>
+        <tr>
+            <td>YourEmail</td>
+            <td><input type="text" id="email"></td>
+            <td><span>không được bỏ trống</span></td>
+        </tr>
+        <tr>
+            <td>r-youremail</td>
+            <td><input type="text" id="remail"></td>
+            <td><span>không được bỏ trống</span></td>
+        </tr>
+       
+        <tr>
+            <td>I am</td>
+            <td>
+                <select name="" id="gender">
+                    <option value="">female</option>
+                    <option value="">male</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Birthday:</td>
+            <td><input type="date" id="birthday"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Đăng ký" ></td>
+        </tr>
+    </table>
+</form>
+
+    
+</body>
+</html>
