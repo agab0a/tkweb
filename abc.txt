@@ -1,62 +1,48 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>VD</title>
-    <script language="JavaScript">
-        function tinh() {
-            var a = parseInt(document.MT.so1.value);
-            var b = parseInt(document.MT.so2.value);
-            var c = parseInt(document.MT.so3.value);
-            var delta = b * b - 4 * a * c;
-            if (a === 0 && b === 0 && c === 0) {
-                document.MT.kq.value = "Vô số nghiệm";
-            } else if (a === 0 && b === 0 && c !== 0) {
-                document.MT.kq.value = "Vô nghiệm";
-            } else if (a === 0 && b !== 0) {
-                document.MT.kq.value = -c / b;
-            } else if (delta >= 0) {
-                document.MT.kq.value = (-b + Math.sqrt(delta)) / (2 * a);
-                document.MT.kq1.value = (-b - Math.sqrt(delta)) / (2 * a);
-            } else {
-                document.MT.kq.value = "PT vô nghiệm";
-                document.MT.kq1.value = "";
-            }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Tổng Số Hoàn Hảo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
         }
-    </script>
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, button {
+            margin-top: 5px;
+            padding: 5px;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
-    <form name="MT">
-        <table border="1" align="center">
-            <tr>
-                <td>Số a</td>
-                <td><input type="text" name="so1"></td>
-            </tr>
-            <tr>
-                <td>Số b</td>
-                <td><input type="text" name="so2"></td>
-            </tr>
-            <tr>
-                <td>Số c</td>
-                <td><input type="text" name="so3"></td>
-            </tr>
-            <tr>
-                <td>Nghiệm x1</td>
-                <td><input type="text" name="kq"></td>
-            </tr>
-            <tr>
-                <td>Nghiệm x2</td>
-                <td><input type="text" name="kq1"></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="button" onClick="tinh();" value="Thực hiện">
-                    <input type="reset" value="Xóa">
-                </td>
-            </tr>
-        </table>
-    </form>
-</body>
+    <h2>Tính Tổng Các Số Hoàn Hảo Nhỏ Hơn n</h2>
+    <label for="inputNumber">Nhập số nguyên n:</label>
+    <input type="number" id="inputNumber" min="1" placeholder="Nhập số n">
 
-</html>
+    <button onclick="calculatePerfectSum()">Tính</button>
+    <button onclick="resetForm()">Hủy bỏ</button>
+
+    <div id="result">Tổng các số hoàn hảo nhỏ hơn n: </div>
+
+    <script>
+        // Function to check if a number is perfect
+        function isPerfectNumber(num) {
+            let sum = 0;
+            for (let i = 1; i < num; i++) {
+                if (num % i === 0) {
+                    sum += i;
+                }
+            }
+            return sum === num;
+        }
+
+        // Function to calculate the
