@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VD</title>
+    <script language="JavaScript">
+        function tinh() {
+            var a = parseInt(document.MT.so1.value);
+            var b = parseInt(document.MT.so2.value);
+            var c = parseInt(document.MT.so3.value);
+            var delta = b * b - 4 * a * c;
+            if (a === 0 && b === 0 && c === 0) {
+                document.MT.kq.value = "Vô số nghiệm";
+            } else if (a === 0 && b === 0 && c !== 0) {
+                document.MT.kq.value = "Vô nghiệm";
+            } else if (a === 0 && b !== 0) {
+                document.MT.kq.value = -c / b;
+            } else if (delta >= 0) {
+                document.MT.kq.value = (-b + Math.sqrt(delta)) / (2 * a);
+                document.MT.kq1.value = (-b - Math.sqrt(delta)) / (2 * a);
+            } else {
+                document.MT.kq.value = "PT vô nghiệm";
+                document.MT.kq1.value = "";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form name="MT">
+        <table border="1" align="center">
+            <tr>
+                <td>Số a</td>
+                <td><input type="text" name="so1"></td>
+            </tr>
+            <tr>
+                <td>Số b</td>
+                <td><input type="text" name="so2"></td>
+            </tr>
+            <tr>
+                <td>Số c</td>
+                <td><input type="text" name="so3"></td>
+            </tr>
+            <tr>
+                <td>Nghiệm x1</td>
+                <td><input type="text" name="kq"></td>
+            </tr>
+            <tr>
+                <td>Nghiệm x2</td>
+                <td><input type="text" name="kq1"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" onClick="tinh();" value="Thực hiện">
+                    <input type="reset" value="Xóa">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
