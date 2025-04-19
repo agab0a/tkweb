@@ -1,223 +1,193 @@
-Dưới đây là mẫu code HTML và CSS thiết kế giao diện web giống như ảnh bạn cung cấp, có cả menu cấp 2 cho phần "Sản phẩm". Bạn có thể tùy chỉnh thêm nếu cần.
+Dưới đây là mẫu giao diện web giống như hình bạn cung cấp, bao gồm header, menu 2 cấp, nội dung chính (đối tác) và footer. Mã sử dụng HTML + CSS thuần:
 
 
 ---
 
-HTML (index.html)
+HTML: index.html
 
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Công Ty TNHH TM DV Tú Mỹ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Headset</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <header>
-      <div class="logo">
-        <img src="logo.png" alt="Logo">
-        <h1>CÔNG TY TNHH TM DV TÚ MỸ</h1>
+  <!-- Header -->
+  <header>
+    <div class="topbar">
+      <div class="left">
+        <span>Hotline: 0989.999.999</span>
+        <span>Email: contact@gaming.com.vn</span>
       </div>
-    </header>
+      <div class="right">
+        <a href="#">Khuyến mãi</a>
+        <a href="#">Tin tức</a>
+        <a href="#">Liên hệ</a>
+      </div>
+    </div>
+    <div class="logo">
+      <h1>GAMING HEADSET</h1>
+    </div>
+  </header>
 
-    <!-- Navigation -->
-    <nav class="main-menu">
-      <ul>
-        <li><a href="#">Trang chủ</a></li>
-        <li><a href="#">Giới thiệu chung</a></li>
-        <li><a href="#">Đối tác</a></li>
-        <li><a href="#">Dịch vụ</a></li>
-        <li class="has-submenu"><a href="#">Sản phẩm</a>
-          <ul class="submenu">
-            <li><a href="#">Túi</a></li>
-            <li><a href="#">Trang sức</a></li>
-            <li><a href="#">Đồ gốm sứ mỹ nghệ</a></li>
-            <li><a href="#">Thổ cẩm</a></li>
-            <li><a href="#">Thời trang</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Liên hệ</a></li>
-      </ul>
-    </nav>
-
-    <!-- Main Content -->
-    <main>
-      <aside class="sidebar">
-        <h3>SẢN PHẨM</h3>
-        <ul>
-          <li><a href="#">Túi</a></li>
-          <li><a href="#">Trang sức</a></li>
-          <li><a href="#">Đồ gốm sứ mỹ nghệ</a></li>
-          <li><a href="#">Thổ cẩm</a></li>
-          <li><a href="#">Thời trang</a></li>
+  <!-- Menu 2 cấp -->
+  <nav>
+    <ul class="menu">
+      <li><a href="#">Trang chủ</a></li>
+      <li class="dropdown">
+        <a href="#">Sản phẩm</a>
+        <ul class="submenu">
+          <li><a href="#">Thời trang nam</a></li>
+          <li><a href="#">Thời trang nữ</a></li>
+          <li><a href="#">Thời trang trẻ em</a></li>
+          <li><a href="#">Thời trang công sở</a></li>
+          <li><a href="#">Thời trang hè</a></li>
         </ul>
-      </aside>
+      </li>
+      <li><a href="#">Thông tin công nghệ</a></li>
+      <li><a href="#">Về chúng tôi</a></li>
+      <li><a href="#">Hệ thống cửa hàng</a></li>
+      <li><a href="#">Livestream</a></li>
+    </ul>
+  </nav>
 
-      <section class="product-content">
-        <h2>Sản phẩm > Túi</h2>
-        <div class="product-grid">
-          <!-- Mỗi túi -->
-          <div class="product-item">
-            <img src="bag1.jpg" alt="Túi 1">
-            <p>Mã sản phẩm</p>
-            <p>Giá tiền / Số lượng</p>
-          </div>
-          <!-- Thêm nhiều túi khác nếu muốn -->
-        </div>
-      </section>
-    </main>
+  <!-- Nội dung chính -->
+  <main>
+    <h2>ĐỐI TÁC CỦA CHÚNG TÔI</h2>
+    <p>Danh sách đối tác đáng tin cậy, hỗ trợ bền vững và lâu dài.</p>
+    <div class="partners">
+      <img src="logo1.png" alt="Logo Aware">
+      <img src="logo2.png" alt="Logo Matrex Audio">
+      <img src="logo3.png" alt="Logo Generic">
+      <!-- Thêm ảnh tùy thích -->
+    </div>
+  </main>
 
-    <!-- Footer -->
-    <footer>
-      <p>Bản quyền thuộc về Công ty TNHH TM DV Tú Mỹ</p>
-      <p>Địa chỉ: 20 Phan Đình Giót, Phường 2, Quận Tân Bình Tp.HCM, Tel: (08) 6301280</p>
-    </footer>
-  </div>
+  <!-- Footer -->
+  <footer>
+    <p>Copyright-Gaming.com.vn</p>
+  </footer>
 </body>
 </html>
 
 
 ---
 
-CSS (style.css)
+CSS: style.css
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #fdfdfd;
+  background-color: #f5f5f5;
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-}
-
-header {
-  background: #b22222;
+header .topbar {
+  background-color: #333;
   color: white;
-  padding: 15px;
+  padding: 10px;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
 }
 
-.logo img {
-  width: 60px;
-  margin-right: 15px;
-}
-
-nav.main-menu {
-  background: #eee;
-}
-
-nav.main-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-nav.main-menu ul li {
-  position: relative;
-}
-
-nav.main-menu ul li a {
-  display: block;
-  padding: 12px 20px;
-  color: #333;
+header .topbar a {
+  color: white;
+  margin-left: 15px;
   text-decoration: none;
 }
 
-nav.main-menu ul li a:hover {
-  background: #ccc;
+header .logo {
+  text-align: center;
+  background-color: #000;
+  color: white;
+  padding: 20px 0;
 }
 
-nav.main-menu .submenu {
+nav {
+  background-color: #444;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu > li > a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.menu > li:hover {
+  background-color: #555;
+}
+
+.submenu {
   display: none;
   position: absolute;
-  background: #fff;
-  border: 1px solid #ccc;
-  top: 40px;
+  background-color: #666;
+  list-style: none;
+  top: 100%;
   left: 0;
   min-width: 180px;
 }
 
-nav.main-menu li:hover .submenu {
+.submenu li a {
+  padding: 10px;
   display: block;
+  color: white;
+  text-decoration: none;
 }
 
-nav.main-menu .submenu li {
-  width: 100%;
+.dropdown:hover .submenu {
+  display: block;
 }
 
 main {
-  display: flex;
-  padding: 20px;
+  text-align: center;
+  padding: 40px;
 }
 
-.sidebar {
-  width: 200px;
-  margin-right: 20px;
-  background: #a52a2a;
-  color: white;
-  padding: 10px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar ul li a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  padding: 5px 0;
-}
-
-.sidebar ul li a:hover {
-  text-decoration: underline;
-}
-
-.product-content {
-  flex: 1;
-}
-
-.product-content h2 {
-  color: #a52a2a;
+main h2 {
+  font-size: 28px;
   margin-bottom: 10px;
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+main p {
+  margin-bottom: 30px;
+  color: #555;
 }
 
-.product-item {
-  text-align: center;
-  border: 1px solid #ddd;
-  padding: 10px;
-  background: #fff;
-}
-
-.product-item img {
-  max-width: 100%;
-  height: auto;
+.partners img {
+  width: 120px;
+  margin: 10px;
+  vertical-align: middle;
 }
 
 footer {
-  background: #222;
-  color: #ccc;
+  background-color: #000;
+  color: white;
   text-align: center;
-  padding: 20px;
-  margin-top: 20px;
+  padding: 15px 0;
+  margin-top: 50px;
 }
 
 
 ---
 
-Nếu bạn cần mình giúp tích hợp dữ liệu sản phẩm từ file JSON hoặc cơ sở dữ liệu, hoặc tạo thêm chức năng lọc sản phẩm, chi tiết sản phẩm, cứ nói nhé!
+Bạn có thể thay các ảnh logo bằng các file thực tế (ví dụ: logo1.png, logo2.png,...) để hiển thị đúng như ảnh gốc.
+
+Nếu bạn cần cả gói zip chứa đầy đủ các file, mình có thể tạo giúp luôn. Bạn muốn thêm hiệu ứng động hay responsive không?
 
