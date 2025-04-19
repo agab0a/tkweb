@@ -1,0 +1,223 @@
+Dưới đây là mẫu code HTML và CSS thiết kế giao diện web giống như ảnh bạn cung cấp, có cả menu cấp 2 cho phần "Sản phẩm". Bạn có thể tùy chỉnh thêm nếu cần.
+
+
+---
+
+HTML (index.html)
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Công Ty TNHH TM DV Tú Mỹ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="Logo">
+        <h1>CÔNG TY TNHH TM DV TÚ MỸ</h1>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-menu">
+      <ul>
+        <li><a href="#">Trang chủ</a></li>
+        <li><a href="#">Giới thiệu chung</a></li>
+        <li><a href="#">Đối tác</a></li>
+        <li><a href="#">Dịch vụ</a></li>
+        <li class="has-submenu"><a href="#">Sản phẩm</a>
+          <ul class="submenu">
+            <li><a href="#">Túi</a></li>
+            <li><a href="#">Trang sức</a></li>
+            <li><a href="#">Đồ gốm sứ mỹ nghệ</a></li>
+            <li><a href="#">Thổ cẩm</a></li>
+            <li><a href="#">Thời trang</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <aside class="sidebar">
+        <h3>SẢN PHẨM</h3>
+        <ul>
+          <li><a href="#">Túi</a></li>
+          <li><a href="#">Trang sức</a></li>
+          <li><a href="#">Đồ gốm sứ mỹ nghệ</a></li>
+          <li><a href="#">Thổ cẩm</a></li>
+          <li><a href="#">Thời trang</a></li>
+        </ul>
+      </aside>
+
+      <section class="product-content">
+        <h2>Sản phẩm > Túi</h2>
+        <div class="product-grid">
+          <!-- Mỗi túi -->
+          <div class="product-item">
+            <img src="bag1.jpg" alt="Túi 1">
+            <p>Mã sản phẩm</p>
+            <p>Giá tiền / Số lượng</p>
+          </div>
+          <!-- Thêm nhiều túi khác nếu muốn -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>Bản quyền thuộc về Công ty TNHH TM DV Tú Mỹ</p>
+      <p>Địa chỉ: 20 Phan Đình Giót, Phường 2, Quận Tân Bình Tp.HCM, Tel: (08) 6301280</p>
+    </footer>
+  </div>
+</body>
+</html>
+
+
+---
+
+CSS (style.css)
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fdfdfd;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+header {
+  background: #b22222;
+  color: white;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 60px;
+  margin-right: 15px;
+}
+
+nav.main-menu {
+  background: #eee;
+}
+
+nav.main-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav.main-menu ul li {
+  position: relative;
+}
+
+nav.main-menu ul li a {
+  display: block;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+nav.main-menu ul li a:hover {
+  background: #ccc;
+}
+
+nav.main-menu .submenu {
+  display: none;
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+  top: 40px;
+  left: 0;
+  min-width: 180px;
+}
+
+nav.main-menu li:hover .submenu {
+  display: block;
+}
+
+nav.main-menu .submenu li {
+  width: 100%;
+}
+
+main {
+  display: flex;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 200px;
+  margin-right: 20px;
+  background: #a52a2a;
+  color: white;
+  padding: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
+}
+
+.product-content {
+  flex: 1;
+}
+
+.product-content h2 {
+  color: #a52a2a;
+  margin-bottom: 10px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.product-item {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background: #fff;
+}
+
+.product-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  background: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+
+---
+
+Nếu bạn cần mình giúp tích hợp dữ liệu sản phẩm từ file JSON hoặc cơ sở dữ liệu, hoặc tạo thêm chức năng lọc sản phẩm, chi tiết sản phẩm, cứ nói nhé!
+
