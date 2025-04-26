@@ -1,193 +1,415 @@
-Dưới đây là mẫu giao diện web giống như hình bạn cung cấp, bao gồm header, menu 2 cấp, nội dung chính (đối tác) và footer. Mã sử dụng HTML + CSS thuần:
+Tôi hiểu bạn muốn các lời giải sử dụng HTML kèm JavaScript để giải các bài tập trong tài liệu. Vì tôi đã cung cấp các giải pháp HTML cho **Bài 1, Bài 5, Bài 6, Bài 7, Bài 9** và **Bài 10** trong câu trả lời trước, tôi sẽ đảm bảo rằng các giải pháp tiếp tục sử dụng HTML và JavaScript, đồng thời kiểm tra lại để đảm bảo tính chính xác và đầy đủ. **Bài 2** không thể giải do nội dung bị lỗi, và **Bài 3, Bài 4, Bài 8** không có trong tài liệu, nên tôi sẽ tập trung vào các bài đã được yêu cầu.
 
+Nếu bạn muốn thêm CSS để cải thiện giao diện hoặc có yêu cầu cụ thể khác (ví dụ: tích hợp tất cả các bài vào một trang HTML duy nhất), hãy cho tôi biết! Dưới đây, tôi sẽ cung cấp lại các giải pháp HTML cho từng bài, tối ưu hóa mã và bổ sung một số cải tiến nhỏ (như thông báo lỗi rõ ràng hơn và định dạng cơ bản). Mỗi bài được bọc trong thẻ `<xaiArtifact>`.
 
 ---
 
-HTML: index.html
+### **Bài 1: Tính Diện Tích Hình Chữ Nhật**
+**Mục tiêu**: Tạo biểu mẫu HTML để tính diện tích hình chữ nhật.
 
+<xaiArtifact artifact_id="aea215fe-9ffe-492a-a9b3-d36baaa813c2" artifact_version_id="a92e7e94-20f8-4950-9da1-0683573392f2" title="rectangle_area.html" contentType="text/html">
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaming Headset</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Diện tích hình chữ nhật</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: inline-block; width: 100px; }
+        input, button { margin: 5px; }
+        span { color: blue; }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="topbar">
-      <div class="left">
-        <span>Hotline: 0989.999.999</span>
-        <span>Email: contact@gaming.com.vn</span>
-      </div>
-      <div class="right">
-        <a href="#">Khuyến mãi</a>
-        <a href="#">Tin tức</a>
-        <a href="#">Liên hệ</a>
-      </div>
+    <h2>DIỆN TÍCH HÌNH CHỮ NHẬT</h2>
+    <div>
+        <label>Chiều dài:</label>
+        <input type="number" id="length" min="0" step="0.1" required>
     </div>
-    <div class="logo">
-      <h1>GAMING HEADSET</h1>
+    <div>
+        <label>Chiều rộng:</label>
+        <input type="number" id="width" min="0" step="0.1" required>
     </div>
-  </header>
-
-  <!-- Menu 2 cấp -->
-  <nav>
-    <ul class="menu">
-      <li><a href="#">Trang chủ</a></li>
-      <li class="dropdown">
-        <a href="#">Sản phẩm</a>
-        <ul class="submenu">
-          <li><a href="#">Thời trang nam</a></li>
-          <li><a href="#">Thời trang nữ</a></li>
-          <li><a href="#">Thời trang trẻ em</a></li>
-          <li><a href="#">Thời trang công sở</a></li>
-          <li><a href="#">Thời trang hè</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Thông tin công nghệ</a></li>
-      <li><a href="#">Về chúng tôi</a></li>
-      <li><a href="#">Hệ thống cửa hàng</a></li>
-      <li><a href="#">Livestream</a></li>
-    </ul>
-  </nav>
-
-  <!-- Nội dung chính -->
-  <main>
-    <h2>ĐỐI TÁC CỦA CHÚNG TÔI</h2>
-    <p>Danh sách đối tác đáng tin cậy, hỗ trợ bền vững và lâu dài.</p>
-    <div class="partners">
-      <img src="logo1.png" alt="Logo Aware">
-      <img src="logo2.png" alt="Logo Matrex Audio">
-      <img src="logo3.png" alt="Logo Generic">
-      <!-- Thêm ảnh tùy thích -->
+    <div>
+        <label>Diện tích:</label>
+        <span id="area"></span>
     </div>
-  </main>
+    <button onclick="calculateArea()">Tính</button>
 
-  <!-- Footer -->
-  <footer>
-    <p>Copyright-Gaming.com.vn</p>
-  </footer>
+    <script>
+        function calculateArea() {
+            let length = parseFloat(document.getElementById("length").value);
+            let width = parseFloat(document.getElementById("width").value);
+            let areaSpan = document.getElementById("area");
+            if (isNaN(length) || isNaN(width) || length <= 0 || width <= 0) {
+                areaSpan.innerText = "Vui lòng nhập số dương hợp lệ";
+                areaSpan.style.color = "red";
+                return;
+            }
+            let area = length * width;
+            areaSpan.innerText = area.toFixed(2);
+            areaSpan.style.color = "blue";
+        }
+    </script>
 </body>
 </html>
+</xaiArtifact>
 
-
----
-
-CSS: style.css
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-body {
-  background-color: #f5f5f5;
-}
-
-header .topbar {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-header .topbar a {
-  color: white;
-  margin-left: 15px;
-  text-decoration: none;
-}
-
-header .logo {
-  text-align: center;
-  background-color: #000;
-  color: white;
-  padding: 20px 0;
-}
-
-nav {
-  background-color: #444;
-}
-
-.menu {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-.menu li {
-  position: relative;
-}
-
-.menu > li > a {
-  display: block;
-  padding: 15px 20px;
-  color: white;
-  text-decoration: none;
-}
-
-.menu > li:hover {
-  background-color: #555;
-}
-
-.submenu {
-  display: none;
-  position: absolute;
-  background-color: #666;
-  list-style: none;
-  top: 100%;
-  left: 0;
-  min-width: 180px;
-}
-
-.submenu li a {
-  padding: 10px;
-  display: block;
-  color: white;
-  text-decoration: none;
-}
-
-.dropdown:hover .submenu {
-  display: block;
-}
-
-main {
-  text-align: center;
-  padding: 40px;
-}
-
-main h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-main p {
-  margin-bottom: 30px;
-  color: #555;
-}
-
-.partners img {
-  width: 120px;
-  margin: 10px;
-  vertical-align: middle;
-}
-
-footer {
-  background-color: #000;
-  color: white;
-  text-align: center;
-  padding: 15px 0;
-  margin-top: 50px;
-}
-
+**Giải thích**:
+- HTML: Biểu mẫu gồm hai ô nhập (`<input type="number">`) và một nút tính. Kết quả hiển thị trong thẻ `<span>`.
+- CSS: Định dạng cơ bản để căn chỉnh và làm rõ giao diện.
+- JavaScript: Lấy giá trị, kiểm tra tính hợp lệ (số dương), tính diện tích, và cập nhật kết quả với 2 chữ số thập phân.
 
 ---
 
-Bạn có thể thay các ảnh logo bằng các file thực tế (ví dụ: logo1.png, logo2.png,...) để hiển thị đúng như ảnh gốc.
+### **Bài 5: Đánh Giá Năng Lực**
+**Mục tiêu**: Tạo biểu mẫu HTML để tính tổng điểm và xếp loại năng lực.
 
-Nếu bạn cần cả gói zip chứa đầy đủ các file, mình có thể tạo giúp luôn. Bạn muốn thêm hiệu ứng động hay responsive không?
+<xaiArtifact artifact_id="0d68596c-e7ad-4564-a905-502353788fbd" artifact_version_id="03f4a708-5797-4f62-98a9-e010db2af1c0" title="competency_evaluation.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đánh giá năng lực HAUI 2023</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: inline-block; width: 150px; }
+        input, button { margin: 5px; }
+        span { color: blue; }
+    </style>
+</head>
+<body>
+    <h2>DANH GIÁ NĂNG LỰC HAUI 2023</h2>
+    <div>
+        <label>Tư duy định lượng:</label>
+        <input type="number" id="quantitative" min="0" max="100" required>
+    </div>
+    <div>
+        <label>Tư duy định tính:</label>
+        <input type="number" id="qualitative" min="0" max="100" required>
+    </div>
+    <div>
+        <label>Khoa học:</label>
+        <input type="number" id="science" min="0" max="100" required>
+    </div>
+    <div>
+        <label>Tổng điểm:</label>
+        <span id="total"></span>
+    </div>
+    <div>
+        <label>Điểm đạt:</label>
+        <span id="passing">120</span>
+    </div>
+    <div>
+        <label>Kết quả:</label>
+        <span id="result"></span>
+    </div>
+    <div>
+        <label>Xếp loại:</label>
+        <span id="ranking"></span>
+    </div>
+    <button onclick="evaluateScores()">Tính</button>
 
+    <script>
+        function evaluateScores() {
+            let quantitative = parseFloat(document.getElementById("quantitative").value);
+            let qualitative = parseFloat(document.getElementById("qualitative").value);
+            let science = parseFloat(document.getElementById("science").value);
+            let totalSpan = document.getElementById("total");
+            let resultSpan = document.getElementById("result");
+            let rankingSpan = document.getElementById("ranking");
+            if (isNaN(quantitative) || isNaN(qualitative) || isNaN(science) || 
+                quantitative < 0 || qualitative < 0 || science < 0 || 
+                quantitative > 100 || qualitative > 100 || science > 100) {
+                totalSpan.innerText = "Vui lòng nhập điểm hợp lệ (0-100)";
+                totalSpan.style.color = "red";
+                resultSpan.innerText = "";
+                rankingSpan.innerText = "";
+                return;
+            }
+            let total = quantitative + qualitative + science;
+            totalSpan.innerText = total;
+            totalSpan.style.color = "blue";
+            resultSpan.innerText = total >= 120 ? "Bạn đã đỗ" : "Bạn trượt";
+            resultSpan.style.color = total >= 120 ? "green" : "red";
+            let ranking = total >= 180 ? "Xuất sắc" : total >= 150 ? "Giỏi" : total >= 120 ? "Khá" : "Không đạt";
+            rankingSpan.innerText = ranking;
+            rankingSpan.style.color = "blue";
+        }
+    </script>
+</body>
+</html>
+</xaiArtifact>
+
+**Giải thích**:
+- HTML: Biểu mẫu có ba ô nhập điểm, hiển thị tổng điểm, kết quả (đỗ/trượt), và xếp loại.
+- CSS: Căn chỉnh giao diện và định dạng văn bản.
+- JavaScript: Kiểm tra điểm hợp lệ (0-100), tính tổng, so sánh với điểm đạt (120), và xếp loại (Xuất sắc, Giỏi, Khá, Không đạt).
+
+---
+
+### **Bài 6: Tính Cạnh Huyền Tam Giác Vuông**
+**Mục tiêu**: Tạo biểu mẫu HTML để tính cạnh huyền theo định lý Pythagoras.
+
+<xaiArtifact artifact_id="f1dcf7de-948d-41ea-9751-7f5ce8001266" artifact_version_id="e55ab2c0-aea5-4d9b-a68c-94375ea6e050" title="hypotenuse.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Cạnh huyền tam giác vuông</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: inline-block; width: 100px; }
+        input, button { margin: 5px; }
+        span { color: blue; }
+    </style>
+</head>
+<body>
+    <h2>CẠNH HUYỀN TAM GIÁC VUÔNG</h2>
+    <div>
+        <label>Cạnh A:</label>
+        <input type="number" id="sideA" min="0" step="0.1" required>
+    </div>
+    <div>
+        <label>Cạnh B:</label>
+        <input type="number" id="sideB" min="0" step="0.1" required>
+    </div>
+    <div>
+        <label>Cạnh huyền:</label>
+        <span id="hypotenuse"></span>
+    </div>
+    <button onclick="calculateHypotenuse()">Tìm</button>
+
+    <script>
+        function calculateHypotenuse() {
+            let sideA = parseFloat(document.getElementById("sideA").value);
+            let sideB = parseFloat(document.getElementById("sideB").value);
+            let hypotenuseSpan = document.getElementById("hypotenuse");
+            if (isNaN(sideA) || isNaN(sideB) || sideA <= 0 || sideB <= 0) {
+                hypotenuseSpan.innerText = "Vui lòng nhập số dương hợp lệ";
+                hypotenuseSpan.style.color = "red";
+                return;
+            }
+            let hypotenuse = Math.sqrt(sideA * sideA + sideB * sideB);
+            hypotenuseSpan.innerText = hypotenuse.toFixed(2);
+            hypotenuseSpan.style.color = "blue";
+        }
+    </script>
+</body>
+</html>
+</xaiArtifact>
+
+**Giải thích**:
+- HTML: Biểu mẫu nhận hai cạnh góc vuông và hiển thị cạnh huyền.
+- CSS: Định dạng cơ bản cho giao diện.
+- JavaScript: Tính cạnh huyền bằng `√(A² + B²)`, làm tròn kết quả, và kiểm tra đầu vào hợp lệ.
+
+---
+
+### **Bài 7: Tìm Số Lớn Hơn**
+**Mục tiêu**: Tạo biểu mẫu HTML để so sánh hai số.
+
+<xaiArtifact artifact_id="2111d5e0-ee61-4397-9490-adef60ff55d2" artifact_version_id="8a147bc4-7f64-4f2a-9d70-f1949f6137be" title="larger_number.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm số lớn hơn</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: inline-block; width: 100px; }
+        input, button { margin: 5px; }
+        span { color: blue; }
+    </style>
+</head>
+<body>
+    <h2>TÌM SỐ LỚN HƠN</h2>
+    <div>
+        <label>Số A:</label>
+        <input type="number" id="numberA" step="0.1" required>
+    </div>
+    <div>
+        <label>Số B:</label>
+        <input type="number" id="numberB" step="0.1" required>
+    </div>
+    <div>
+        <label>Số lớn hơn:</label>
+        <span id="larger"></span>
+    </div>
+    <button onclick="findLarger()">Tìm</button>
+
+    <script>
+        function findLarger() {
+            let numberA = parseFloat(document.getElementById("numberA").value);
+            let numberB = parseFloat(document.getElementById("numberB").value);
+            let largerSpan = document.getElementById("larger");
+            if (isNaN(numberA) || isNaN(numberB)) {
+                largerSpan.innerText = "Vui lòng nhập số hợp lệ";
+                largerSpan.style.color = "red";
+                return;
+            }
+            largerSpan.style.color = "blue";
+            if (numberA > numberB) {
+                largerSpan.innerText = `Số A (${numberA}) lớn hơn`;
+            } else if (numberB > numberA) {
+                largerSpan.innerText = `Số B (${numberB}) lớn hơn`;
+            } else {
+                largerSpan.innerText = "Hai số bằng nhau";
+            }
+        }
+    </script>
+</body>
+</html>
+</xaiArtifact>
+
+**Giải thích**:
+- HTML: Biểu mẫu nhận hai số và hiển thị kết quả so sánh.
+- CSS: Căn chỉnh giao diện.
+- JavaScript: So sánh hai số bằng `if-else`, hiển thị số lớn hơn hoặc thông báo nếu bằng nhau.
+
+---
+
+### **Bài 9: Tính Tiền Karaoke**
+**Mục tiêu**: Tạo biểu mẫu HTML để tính tiền karaoke dựa trên giờ bắt đầu và số giờ sử dụng.
+
+**Giả định**: Giá 50.000 VNĐ/giờ trước 17:00, 100.000 VNĐ/giờ sau 17:00.
+
+<xaiArtifact artifact_id="6e4e07f1-66a6-4f58-87f1-71c2a88c5163" artifact_version_id="7ca826df-35c7-4ca9-b9d5-9246958c2232" title="karaoke_billing.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính tiền Karaoke</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: inline-block; width: 150px; }
+        input, button { margin: 5px; }
+        span { color: blue; }
+    </style>
+</head>
+<body>
+    <h2>TÍNH TIỀN KARAOKE</h2>
+    <div>
+        <label>Giờ bắt đầu (0-23):</label>
+        <input type="number" id="startHour" min="0" max="23" required>
+    </div>
+    <div>
+        <label>Số giờ sử dụng:</label>
+        <input type="number" id="hours" min="1" required>
+    </div>
+    <div>
+        <label>Tổng tiền:</label>
+        <span id="total"></span>
+    </div>
+    <button onclick="calculateKaraoke()">Tính</button>
+
+    <script>
+        function calculateKaraoke() {
+            let startHour = parseInt(document.getElementById("startHour").value);
+            let hours = parseInt(document.getElementById("hours").value);
+            let totalSpan = document.getElementById("total");
+            if (isNaN(startHour) || isNaN(hours) || startHour < 0 || startHour > 23 || hours < 1) {
+                totalSpan.innerText = "Vui lòng nhập giờ và số giờ hợp lệ";
+                totalSpan.style.color = "red";
+                return;
+            }
+            let rate = startHour < 17 ? 50000 : 100000;
+            let total = rate * hours;
+            totalSpan.innerText = total.toLocaleString('vi-VN') + " VNĐ";
+            totalSpan.style.color = "blue";
+        }
+    </script>
+</body>
+</html>
+</xaiArtifact>
+
+**Giải thích**:
+- HTML: Biểu mẫu nhận giờ bắt đầu và số giờ, hiển thị tổng tiền.
+- CSS: Định dạng giao diện.
+- JavaScript: Xác định giá dựa trên giờ bắt đầu, tính tổng tiền, và định dạng kết quả với đơn vị VNĐ.
+
+---
+
+### **Bài 10: Nhận Dạng Tam Giác**
+**Mục tiêu**: Tạo biểu mẫu HTML để xác định loại tam giác dựa trên ba cạnh.
+
+<xaiArtifact artifact_id="c108501b-89f5-4820-810b-244bb595465d" artifact_version_id="c79cf985-f661-4c9c-b958-a3fa7d0b62ff" title="triangle_type.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhận dạng tam giác</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: inline-block; width: 100px; }
+        input, button { margin: 5px; }
+        span { color: blue; }
+    </style>
+</head>
+<body>
+    <h2>NHẬN DẠNG TAM GIÁC</h2>
+    <div>
+        <label>Cạnh 1:</label>
+        <input type="number" id="side1" min="0" step="0.1" required>
+    </div>
+    <div>
+        <label>Cạnh 2:</label>
+        <input type="number" id="side2" min="0" step="0.1" required>
+    </div>
+    <div>
+        <label>Cạnh 3:</label>
+        <input type="number" id="side3" min="0" step="0.1" required>
+    </div>
+    <div>
+        <label>Loại tam giác:</label>
+        <span id="type"></span>
+    </div>
+    <button onclick="identifyTriangle()">Xác định</button>
+
+    <script>
+        function identifyTriangle() {
+            let side1 = parseFloat(document.getElementById("side1").value);
+            let side2 = parseFloat(document.getElementById("side2").value);
+            let side3 = parseFloat(document.getElementById("side3").value);
+            let typeSpan = document.getElementById("type");
+            if (isNaN(side1) || isNaN(side2) || isNaN(side3) || side1 <= 0 || side2 <= 0 || side3 <= 0) {
+                typeSpan.innerText = "Vui lòng nhập cạnh dương hợp lệ";
+                typeSpan.style.color = "red";
+                return;
+            }
+            if (side1 + side2 <= side3 || side2 + side3 <= side1 || side1 + side3 <= side2) {
+                typeSpan.innerText = "Không phải tam giác";
+                typeSpan.style.color = "red";
+                return;
+            }
+            typeSpan.style.color = "blue";
+            if (side1 === side2 && side2 === side3) {
+                typeSpan.innerText = "Tam giác đều";
+            } else if (side1 === side2 || side2 === side3 || side1 === side3) {
+                typeSpan.innerText = "Tam giác cân";
+            } else {
+                typeSpan.innerText = "Tam giác thường";
+            }
+        }
+    </script>
+</body>
+</html>
+</xaiArtifact>
+
+**Giải thích**:
+- HTML: Biểu mẫu nhận ba cạnh và hiển thị loại tam giác.
+- CSS: Định dạng giao diện.
+- JavaScript: Kiểm tra tam giác hợp lệ và phân loại (đều, cân, thường, hoặc không phải tam giác).
+
+---
+
+### **Ghi Chú**
+- **HTML**: Tất cả giải pháp sử dụng HTML với các biểu mẫu rõ ràng, có ô nhập, nút, và khu vực hiển thị kết quả.
+- **CSS**: Đã thêm định dạng cơ bản để cải thiện giao diện (căn chỉnh, màu sắc).
+- **JavaScript**: Bao gồm kiểm tra đầu vào, xử lý lỗi, và định dạng kết quả phù hợp với tiếng Việt.
+- **Bài thiếu**:
+  - **Bài 2**: Không thể giải do nội dung lặp lại và thiếu thông tin.
+  - **Bài 3, 4, 8**: Không có trong tài liệu, nên không được giải. Nếu bạn cung cấp thêm thông tin, tôi sẽ bổ sung.
+- **Cải tiến**: Có thể tích hợp tất cả bài vào một trang HTML với menu chọn bài tập nếu bạn muốn. Hãy cho tôi biết nếu cần!
+
+Nếu bạn muốn thêm tính năng, chỉnh sửa giao diện, hoặc cần giải pháp cho các bài khác, hãy yêu cầu cụ thể!
