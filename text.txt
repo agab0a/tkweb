@@ -1,415 +1,386 @@
-Tôi hiểu bạn muốn các lời giải sử dụng HTML kèm JavaScript để giải các bài tập trong tài liệu. Vì tôi đã cung cấp các giải pháp HTML cho **Bài 1, Bài 5, Bài 6, Bài 7, Bài 9** và **Bài 10** trong câu trả lời trước, tôi sẽ đảm bảo rằng các giải pháp tiếp tục sử dụng HTML và JavaScript, đồng thời kiểm tra lại để đảm bảo tính chính xác và đầy đủ. **Bài 2** không thể giải do nội dung bị lỗi, và **Bài 3, Bài 4, Bài 8** không có trong tài liệu, nên tôi sẽ tập trung vào các bài đã được yêu cầu.
+Dưới đây là hướng dẫn chi tiết tạo và chạy dự án Console trong Visual Studio 2022 theo yêu cầu bài tập:
 
-Nếu bạn muốn thêm CSS để cải thiện giao diện hoặc có yêu cầu cụ thể khác (ví dụ: tích hợp tất cả các bài vào một trang HTML duy nhất), hãy cho tôi biết! Dưới đây, tôi sẽ cung cấp lại các giải pháp HTML cho từng bài, tối ưu hóa mã và bổ sung một số cải tiến nhỏ (như thông báo lỗi rõ ràng hơn và định dạng cơ bản). Mỗi bài được bọc trong thẻ `<xaiArtifact>`.
 
 ---
 
-### **Bài 1: Tính Diện Tích Hình Chữ Nhật**
-**Mục tiêu**: Tạo biểu mẫu HTML để tính diện tích hình chữ nhật.
+1. Tạo dự án mới
 
-<xaiArtifact artifact_id="aea215fe-9ffe-492a-a9b3-d36baaa813c2" artifact_version_id="a92e7e94-20f8-4950-9da1-0683573392f2" title="rectangle_area.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Diện tích hình chữ nhật</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        label { display: inline-block; width: 100px; }
-        input, button { margin: 5px; }
-        span { color: blue; }
-    </style>
-</head>
-<body>
-    <h2>DIỆN TÍCH HÌNH CHỮ NHẬT</h2>
-    <div>
-        <label>Chiều dài:</label>
-        <input type="number" id="length" min="0" step="0.1" required>
-    </div>
-    <div>
-        <label>Chiều rộng:</label>
-        <input type="number" id="width" min="0" step="0.1" required>
-    </div>
-    <div>
-        <label>Diện tích:</label>
-        <span id="area"></span>
-    </div>
-    <button onclick="calculateArea()">Tính</button>
+1. Mở Visual Studio 2022:
+Khởi động Visual Studio 2022.
 
-    <script>
-        function calculateArea() {
-            let length = parseFloat(document.getElementById("length").value);
-            let width = parseFloat(document.getElementById("width").value);
-            let areaSpan = document.getElementById("area");
-            if (isNaN(length) || isNaN(width) || length <= 0 || width <= 0) {
-                areaSpan.innerText = "Vui lòng nhập số dương hợp lệ";
-                areaSpan.style.color = "red";
-                return;
-            }
-            let area = length * width;
-            areaSpan.innerText = area.toFixed(2);
-            areaSpan.style.color = "blue";
+
+2. Tạo dự án mới:
+
+Ở màn hình Start (hoặc chọn File > New > Project), chọn "Create a new project."
+
+Trong hộp tìm kiếm, nhập từ khóa “Console” để lọc ra các loại dự án Console App.
+
+Chọn mẫu "Console App (.NET Core)" hoặc "Console App (.NET 6/7)" (tùy thuộc vào phiên bản bạn có) và bấm "Next".
+
+
+
+3. Đặt tên dự án:
+
+Trong ô “Project name”, nhập theo quy tắc:
+HoTen_masv_proj61
+(ví dụ: NguyenLeHa_201987435_proj61).
+
+Chọn vị trí lưu (Location) và tên Solution (bạn có thể giữ nguyên tên dự án cho Solution nếu muốn).
+
+Bấm "Create".
+
+
+
+
+
+---
+
+2. Cài đặt mã nguồn
+
+Cách 1: Sử dụng một file Program.cs cho toàn bộ code
+
+1. Mở file Program.cs:
+Sau khi tạo dự án, Visual Studio sẽ tự động mở file Program.cs. Nếu dự án của bạn sử dụng mô hình "top-level statements" (không có lớp Program rõ ràng), bạn có thể chuyển đổi sang kiểu truyền thống bằng cách:
+
+Xóa mã mặc định (ví dụ: dòng Console.WriteLine("Hello, World!");).
+
+Tạo thêm namespace và các lớp như sau:
+
+
+
+2. Copy mã nguồn đã cung cấp:
+Chép toàn bộ mã nguồn dưới đây vào file Program.cs (hoặc bạn có thể tách các lớp thành file riêng nhưng sau đây hướng dẫn với một file duy nhất):
+
+using System;
+using System.Collections.Generic;
+
+namespace NguyenLeHa_201987435_proj61
+{
+    // Lớp Person
+    public class Person
+    {
+        public int id;
+        public string name;
+        public string address;
+
+        // Hàm khởi tạo không tham số
+        public Person()
+        {
+            id = 0;
+            name = "";
+            address = "";
         }
-    </script>
-</body>
-</html>
-</xaiArtifact>
 
-**Giải thích**:
-- HTML: Biểu mẫu gồm hai ô nhập (`<input type="number">`) và một nút tính. Kết quả hiển thị trong thẻ `<span>`.
-- CSS: Định dạng cơ bản để căn chỉnh và làm rõ giao diện.
-- JavaScript: Lấy giá trị, kiểm tra tính hợp lệ (số dương), tính diện tích, và cập nhật kết quả với 2 chữ số thập phân.
-
----
-
-### **Bài 5: Đánh Giá Năng Lực**
-**Mục tiêu**: Tạo biểu mẫu HTML để tính tổng điểm và xếp loại năng lực.
-
-<xaiArtifact artifact_id="0d68596c-e7ad-4564-a905-502353788fbd" artifact_version_id="03f4a708-5797-4f62-98a9-e010db2af1c0" title="competency_evaluation.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Đánh giá năng lực HAUI 2023</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        label { display: inline-block; width: 150px; }
-        input, button { margin: 5px; }
-        span { color: blue; }
-    </style>
-</head>
-<body>
-    <h2>DANH GIÁ NĂNG LỰC HAUI 2023</h2>
-    <div>
-        <label>Tư duy định lượng:</label>
-        <input type="number" id="quantitative" min="0" max="100" required>
-    </div>
-    <div>
-        <label>Tư duy định tính:</label>
-        <input type="number" id="qualitative" min="0" max="100" required>
-    </div>
-    <div>
-        <label>Khoa học:</label>
-        <input type="number" id="science" min="0" max="100" required>
-    </div>
-    <div>
-        <label>Tổng điểm:</label>
-        <span id="total"></span>
-    </div>
-    <div>
-        <label>Điểm đạt:</label>
-        <span id="passing">120</span>
-    </div>
-    <div>
-        <label>Kết quả:</label>
-        <span id="result"></span>
-    </div>
-    <div>
-        <label>Xếp loại:</label>
-        <span id="ranking"></span>
-    </div>
-    <button onclick="evaluateScores()">Tính</button>
-
-    <script>
-        function evaluateScores() {
-            let quantitative = parseFloat(document.getElementById("quantitative").value);
-            let qualitative = parseFloat(document.getElementById("qualitative").value);
-            let science = parseFloat(document.getElementById("science").value);
-            let totalSpan = document.getElementById("total");
-            let resultSpan = document.getElementById("result");
-            let rankingSpan = document.getElementById("ranking");
-            if (isNaN(quantitative) || isNaN(qualitative) || isNaN(science) || 
-                quantitative < 0 || qualitative < 0 || science < 0 || 
-                quantitative > 100 || qualitative > 100 || science > 100) {
-                totalSpan.innerText = "Vui lòng nhập điểm hợp lệ (0-100)";
-                totalSpan.style.color = "red";
-                resultSpan.innerText = "";
-                rankingSpan.innerText = "";
-                return;
-            }
-            let total = quantitative + qualitative + science;
-            totalSpan.innerText = total;
-            totalSpan.style.color = "blue";
-            resultSpan.innerText = total >= 120 ? "Bạn đã đỗ" : "Bạn trượt";
-            resultSpan.style.color = total >= 120 ? "green" : "red";
-            let ranking = total >= 180 ? "Xuất sắc" : total >= 150 ? "Giỏi" : total >= 120 ? "Khá" : "Không đạt";
-            rankingSpan.innerText = ranking;
-            rankingSpan.style.color = "blue";
+        // Hàm khởi tạo có tham số
+        public Person(int id, string name, string address)
+        {
+            this.id = id;
+            this.name = name;
+            this.address = address;
         }
-    </script>
-</body>
-</html>
-</xaiArtifact>
 
-**Giải thích**:
-- HTML: Biểu mẫu có ba ô nhập điểm, hiển thị tổng điểm, kết quả (đỗ/trượt), và xếp loại.
-- CSS: Căn chỉnh giao diện và định dạng văn bản.
-- JavaScript: Kiểm tra điểm hợp lệ (0-100), tính tổng, so sánh với điểm đạt (120), và xếp loại (Xuất sắc, Giỏi, Khá, Không đạt).
-
----
-
-### **Bài 6: Tính Cạnh Huyền Tam Giác Vuông**
-**Mục tiêu**: Tạo biểu mẫu HTML để tính cạnh huyền theo định lý Pythagoras.
-
-<xaiArtifact artifact_id="f1dcf7de-948d-41ea-9751-7f5ce8001266" artifact_version_id="e55ab2c0-aea5-4d9b-a68c-94375ea6e050" title="hypotenuse.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Cạnh huyền tam giác vuông</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        label { display: inline-block; width: 100px; }
-        input, button { margin: 5px; }
-        span { color: blue; }
-    </style>
-</head>
-<body>
-    <h2>CẠNH HUYỀN TAM GIÁC VUÔNG</h2>
-    <div>
-        <label>Cạnh A:</label>
-        <input type="number" id="sideA" min="0" step="0.1" required>
-    </div>
-    <div>
-        <label>Cạnh B:</label>
-        <input type="number" id="sideB" min="0" step="0.1" required>
-    </div>
-    <div>
-        <label>Cạnh huyền:</label>
-        <span id="hypotenuse"></span>
-    </div>
-    <button onclick="calculateHypotenuse()">Tìm</button>
-
-    <script>
-        function calculateHypotenuse() {
-            let sideA = parseFloat(document.getElementById("sideA").value);
-            let sideB = parseFloat(document.getElementById("sideB").value);
-            let hypotenuseSpan = document.getElementById("hypotenuse");
-            if (isNaN(sideA) || isNaN(sideB) || sideA <= 0 || sideB <= 0) {
-                hypotenuseSpan.innerText = "Vui lòng nhập số dương hợp lệ";
-                hypotenuseSpan.style.color = "red";
-                return;
-            }
-            let hypotenuse = Math.sqrt(sideA * sideA + sideB * sideB);
-            hypotenuseSpan.innerText = hypotenuse.toFixed(2);
-            hypotenuseSpan.style.color = "blue";
+        // Phương thức nhập dữ liệu
+        public virtual void Input()
+        {
+            Console.Write("Nhập id: ");
+            id = int.Parse(Console.ReadLine());
+            Console.Write("Nhập tên: ");
+            name = Console.ReadLine();
+            Console.Write("Nhập địa chỉ: ");
+            address = Console.ReadLine();
         }
-    </script>
-</body>
-</html>
-</xaiArtifact>
 
-**Giải thích**:
-- HTML: Biểu mẫu nhận hai cạnh góc vuông và hiển thị cạnh huyền.
-- CSS: Định dạng cơ bản cho giao diện.
-- JavaScript: Tính cạnh huyền bằng `√(A² + B²)`, làm tròn kết quả, và kiểm tra đầu vào hợp lệ.
+        // Phương thức xuất dữ liệu
+        public virtual void Output()
+        {
+            Console.WriteLine("Id: " + id + "\tTên: " + name + "\tĐịa chỉ: " + address);
+        }
+    }
 
----
+    // Lớp Student kế thừa từ Person
+    public class Student : Person
+    {
+        public byte maths;   // điểm toán
+        public byte physics; // điểm lý
 
-### **Bài 7: Tìm Số Lớn Hơn**
-**Mục tiêu**: Tạo biểu mẫu HTML để so sánh hai số.
+        // Hàm khởi tạo không tham số
+        public Student() : base()
+        {
+            maths = 0;
+            physics = 0;
+        }
 
-<xaiArtifact artifact_id="2111d5e0-ee61-4397-9490-adef60ff55d2" artifact_version_id="8a147bc4-7f64-4f2a-9d70-f1949f6137be" title="larger_number.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Tìm số lớn hơn</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        label { display: inline-block; width: 100px; }
-        input, button { margin: 5px; }
-        span { color: blue; }
-    </style>
-</head>
-<body>
-    <h2>TÌM SỐ LỚN HƠN</h2>
-    <div>
-        <label>Số A:</label>
-        <input type="number" id="numberA" step="0.1" required>
-    </div>
-    <div>
-        <label>Số B:</label>
-        <input type="number" id="numberB" step="0.1" required>
-    </div>
-    <div>
-        <label>Số lớn hơn:</label>
-        <span id="larger"></span>
-    </div>
-    <button onclick="findLarger()">Tìm</button>
+        // Hàm khởi tạo có tham số (id, name, address, maths, physics)
+        public Student(int id, string name, string address, byte maths, byte physics)
+            : base(id, name, address)
+        {
+            this.maths = maths;
+            this.physics = physics;
+        }
 
-    <script>
-        function findLarger() {
-            let numberA = parseFloat(document.getElementById("numberA").value);
-            let numberB = parseFloat(document.getElementById("numberB").value);
-            let largerSpan = document.getElementById("larger");
-            if (isNaN(numberA) || isNaN(numberB)) {
-                largerSpan.innerText = "Vui lòng nhập số hợp lệ";
-                largerSpan.style.color = "red";
-                return;
-            }
-            largerSpan.style.color = "blue";
-            if (numberA > numberB) {
-                largerSpan.innerText = `Số A (${numberA}) lớn hơn`;
-            } else if (numberB > numberA) {
-                largerSpan.innerText = `Số B (${numberB}) lớn hơn`;
-            } else {
-                largerSpan.innerText = "Hai số bằng nhau";
+        // Phương thức nhập dữ liệu cho Student
+        public override void Input()
+        {
+            // Gọi phương thức nhập của lớp cha để nhập id, name, address
+            base.Input();
+            Console.Write("Nhập điểm toán: ");
+            maths = byte.Parse(Console.ReadLine());
+            Console.Write("Nhập điểm lý: ");
+            physics = byte.Parse(Console.ReadLine());
+        }
+
+        // Phương thức xuất dữ liệu cho Student
+        public override void Output()
+        {
+            base.Output();
+            Console.WriteLine("Điểm toán: " + maths + "\tĐiểm lý: " + physics + "\tTổng điểm: " + Total());
+        }
+
+        // Phương thức tính tổng điểm = toán + lý
+        public int Total()
+        {
+            return maths + physics;
+        }
+    }
+
+    class Program
+    {
+        // Sử dụng danh sách lưu trữ sinh viên
+        static List<Student> students = new List<Student>();
+
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                Console.WriteLine("===== MENU =====");
+                Console.WriteLine("1. Thêm một sinh viên");
+                Console.WriteLine("2. Hiển thị danh sách sinh viên");
+                Console.WriteLine("3. Tìm kiếm sinh viên theo id");
+                Console.WriteLine("4. Tìm kiếm sinh viên theo address");
+                Console.WriteLine("5. Xóa một sinh viên theo id");
+                Console.WriteLine("6. Kết thúc chương trình");
+                Console.Write("Chọn chức năng: ");
+                int choice = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
+                switch (choice)
+                {
+                    case 1:
+                        AddStudent();
+                        break;
+                    case 2:
+                        DisplayStudents();
+                        break;
+                    case 3:
+                        SearchById();
+                        break;
+                    case 4:
+                        SearchByAddress();
+                        break;
+                    case 5:
+                        DeleteById();
+                        break;
+                    case 6:
+                        Console.WriteLine("Kết thúc chương trình!");
+                        return;
+                    default:
+                        Console.WriteLine("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
+                        break;
+                }
+                Console.WriteLine();
             }
         }
-    </script>
-</body>
-</html>
-</xaiArtifact>
 
-**Giải thích**:
-- HTML: Biểu mẫu nhận hai số và hiển thị kết quả so sánh.
-- CSS: Căn chỉnh giao diện.
-- JavaScript: So sánh hai số bằng `if-else`, hiển thị số lớn hơn hoặc thông báo nếu bằng nhau.
-
----
-
-### **Bài 9: Tính Tiền Karaoke**
-**Mục tiêu**: Tạo biểu mẫu HTML để tính tiền karaoke dựa trên giờ bắt đầu và số giờ sử dụng.
-
-**Giả định**: Giá 50.000 VNĐ/giờ trước 17:00, 100.000 VNĐ/giờ sau 17:00.
-
-<xaiArtifact artifact_id="6e4e07f1-66a6-4f58-87f1-71c2a88c5163" artifact_version_id="7ca826df-35c7-4ca9-b9d5-9246958c2232" title="karaoke_billing.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Tính tiền Karaoke</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        label { display: inline-block; width: 150px; }
-        input, button { margin: 5px; }
-        span { color: blue; }
-    </style>
-</head>
-<body>
-    <h2>TÍNH TIỀN KARAOKE</h2>
-    <div>
-        <label>Giờ bắt đầu (0-23):</label>
-        <input type="number" id="startHour" min="0" max="23" required>
-    </div>
-    <div>
-        <label>Số giờ sử dụng:</label>
-        <input type="number" id="hours" min="1" required>
-    </div>
-    <div>
-        <label>Tổng tiền:</label>
-        <span id="total"></span>
-    </div>
-    <button onclick="calculateKaraoke()">Tính</button>
-
-    <script>
-        function calculateKaraoke() {
-            let startHour = parseInt(document.getElementById("startHour").value);
-            let hours = parseInt(document.getElementById("hours").value);
-            let totalSpan = document.getElementById("total");
-            if (isNaN(startHour) || isNaN(hours) || startHour < 0 || startHour > 23 || hours < 1) {
-                totalSpan.innerText = "Vui lòng nhập giờ và số giờ hợp lệ";
-                totalSpan.style.color = "red";
-                return;
-            }
-            let rate = startHour < 17 ? 50000 : 100000;
-            let total = rate * hours;
-            totalSpan.innerText = total.toLocaleString('vi-VN') + " VNĐ";
-            totalSpan.style.color = "blue";
+        // Phương thức thêm sinh viên
+        static void AddStudent()
+        {
+            Student s = new Student();
+            Console.WriteLine("Nhập thông tin sinh viên:");
+            s.Input();
+            students.Add(s);
+            Console.WriteLine("Thêm sinh viên thành công!");
         }
-    </script>
-</body>
-</html>
-</xaiArtifact>
 
-**Giải thích**:
-- HTML: Biểu mẫu nhận giờ bắt đầu và số giờ, hiển thị tổng tiền.
-- CSS: Định dạng giao diện.
-- JavaScript: Xác định giá dựa trên giờ bắt đầu, tính tổng tiền, và định dạng kết quả với đơn vị VNĐ.
-
----
-
-### **Bài 10: Nhận Dạng Tam Giác**
-**Mục tiêu**: Tạo biểu mẫu HTML để xác định loại tam giác dựa trên ba cạnh.
-
-<xaiArtifact artifact_id="c108501b-89f5-4820-810b-244bb595465d" artifact_version_id="c79cf985-f661-4c9c-b958-a3fa7d0b62ff" title="triangle_type.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Nhận dạng tam giác</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        label { display: inline-block; width: 100px; }
-        input, button { margin: 5px; }
-        span { color: blue; }
-    </style>
-</head>
-<body>
-    <h2>NHẬN DẠNG TAM GIÁC</h2>
-    <div>
-        <label>Cạnh 1:</label>
-        <input type="number" id="side1" min="0" step="0.1" required>
-    </div>
-    <div>
-        <label>Cạnh 2:</label>
-        <input type="number" id="side2" min="0" step="0.1" required>
-    </div>
-    <div>
-        <label>Cạnh 3:</label>
-        <input type="number" id="side3" min="0" step="0.1" required>
-    </div>
-    <div>
-        <label>Loại tam giác:</label>
-        <span id="type"></span>
-    </div>
-    <button onclick="identifyTriangle()">Xác định</button>
-
-    <script>
-        function identifyTriangle() {
-            let side1 = parseFloat(document.getElementById("side1").value);
-            let side2 = parseFloat(document.getElementById("side2").value);
-            let side3 = parseFloat(document.getElementById("side3").value);
-            let typeSpan = document.getElementById("type");
-            if (isNaN(side1) || isNaN(side2) || isNaN(side3) || side1 <= 0 || side2 <= 0 || side3 <= 0) {
-                typeSpan.innerText = "Vui lòng nhập cạnh dương hợp lệ";
-                typeSpan.style.color = "red";
-                return;
+        // Phương thức hiển thị danh sách sinh viên
+        static void DisplayStudents()
+        {
+            Console.WriteLine("Danh sách sinh viên:");
+            if (students.Count == 0)
+            {
+                Console.WriteLine("Không có sinh viên nào.");
             }
-            if (side1 + side2 <= side3 || side2 + side3 <= side1 || side1 + side3 <= side2) {
-                typeSpan.innerText = "Không phải tam giác";
-                typeSpan.style.color = "red";
-                return;
-            }
-            typeSpan.style.color = "blue";
-            if (side1 === side2 && side2 === side3) {
-                typeSpan.innerText = "Tam giác đều";
-            } else if (side1 === side2 || side2 === side3 || side1 === side3) {
-                typeSpan.innerText = "Tam giác cân";
-            } else {
-                typeSpan.innerText = "Tam giác thường";
+            else
+            {
+                foreach (Student s in students)
+                {
+                    s.Output();
+                    Console.WriteLine("----------------------");
+                }
             }
         }
-    </script>
-</body>
-</html>
-</xaiArtifact>
 
-**Giải thích**:
-- HTML: Biểu mẫu nhận ba cạnh và hiển thị loại tam giác.
-- CSS: Định dạng giao diện.
-- JavaScript: Kiểm tra tam giác hợp lệ và phân loại (đều, cân, thường, hoặc không phải tam giác).
+        // Phương thức tìm kiếm sinh viên theo id
+        static void SearchById()
+        {
+            Console.Write("Nhập id sinh viên cần tìm: ");
+            int id = int.Parse(Console.ReadLine());
+            bool found = false;
+            foreach (Student s in students)
+            {
+                if (s.id == id)
+                {
+                    Console.WriteLine("Tìm thấy sinh viên:");
+                    s.Output();
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.WriteLine("Không tìm thấy sinh viên có id " + id);
+            }
+        }
+
+        // Phương thức tìm kiếm sinh viên theo address
+        static void SearchByAddress()
+        {
+            Console.Write("Nhập địa chỉ cần tìm: ");
+            string addr = Console.ReadLine();
+            bool found = false;
+            foreach (Student s in students)
+            {
+                // Tìm kiếm không phân biệt chữ hoa chữ thường
+                if (s.address.IndexOf(addr, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    if (!found)
+                    {
+                        Console.WriteLine("Danh sách sinh viên có địa chỉ chứa \"" + addr + "\":");
+                    }
+                    s.Output();
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.WriteLine("Không tìm thấy sinh viên có địa chỉ chứa \"" + addr + "\"");
+            }
+        }
+
+        // Phương thức xóa sinh viên theo id
+        static void DeleteById()
+        {
+            Console.Write("Nhập id sinh viên cần xóa: ");
+            int id = int.Parse(Console.ReadLine());
+            Student studentToRemove = null;
+            foreach (Student s in students)
+            {
+                if (s.id == id)
+                {
+                    studentToRemove = s;
+                    break;
+                }
+            }
+            if (studentToRemove != null)
+            {
+                students.Remove(studentToRemove);
+                Console.WriteLine("Xóa sinh viên có id " + id + " thành công.");
+            }
+            else
+            {
+                Console.WriteLine("Không tìm thấy sinh viên có id " + id);
+            }
+        }
+    }
+}
+
+
+3. Lưu file:
+Bấm Ctrl+S hoặc chọn File > Save để lưu các thay đổi.
+
+
+
+Cách 2: Tách riêng các lớp (tùy chọn nâng cao)
+
+Nếu bạn muốn quản lý code tốt hơn bằng cách tạo các file riêng cho từng lớp:
+
+1. Thêm file mới cho lớp Person:
+
+Nhấn chuột phải vào dự án trong Solution Explorer, chọn Add > New Item...
+
+Chọn Class, đặt tên file là Person.cs.
+
+Copy đoạn mã lớp Person vào file Person.cs.
+
+
+
+2. Thêm file mới cho lớp Student:
+
+Tương tự, thêm file Student.cs và copy đoạn mã của lớp Student vào file đó.
+
+
+
+3. Chỉnh sửa file Program.cs:
+Để lại hàm Main và các phương thức xử lý menu trong Program.cs.
+
+Chú ý: Cần đảm bảo rằng các file đều nằm trong cùng một namespace (ở đây là NguyenLeHa_201987435_proj61).
+
+
+
 
 ---
 
-### **Ghi Chú**
-- **HTML**: Tất cả giải pháp sử dụng HTML với các biểu mẫu rõ ràng, có ô nhập, nút, và khu vực hiển thị kết quả.
-- **CSS**: Đã thêm định dạng cơ bản để cải thiện giao diện (căn chỉnh, màu sắc).
-- **JavaScript**: Bao gồm kiểm tra đầu vào, xử lý lỗi, và định dạng kết quả phù hợp với tiếng Việt.
-- **Bài thiếu**:
-  - **Bài 2**: Không thể giải do nội dung lặp lại và thiếu thông tin.
-  - **Bài 3, 4, 8**: Không có trong tài liệu, nên không được giải. Nếu bạn cung cấp thêm thông tin, tôi sẽ bổ sung.
-- **Cải tiến**: Có thể tích hợp tất cả bài vào một trang HTML với menu chọn bài tập nếu bạn muốn. Hãy cho tôi biết nếu cần!
+3. Biên dịch và chạy dự án
 
-Nếu bạn muốn thêm tính năng, chỉnh sửa giao diện, hoặc cần giải pháp cho các bài khác, hãy yêu cầu cụ thể!
+1. Biên dịch dự án:
+
+Chọn Build > Build Solution hoặc nhấn tổ hợp phím Ctrl+Shift+B.
+
+Kiểm tra cửa sổ Output để đảm bảo không có lỗi biên dịch.
+
+
+
+2. Chạy dự án:
+
+Nhấn F5 để chạy dưới chế độ Debug hoặc Ctrl+F5 để chạy mà không cần Debug.
+
+Cửa sổ Console sẽ hiển thị menu như trong đoạn code. Bạn có thể nhập các lựa chọn để kiểm tra chức năng thêm, hiển thị, tìm kiếm, và xóa sinh viên.
+
+
+
+
+
+---
+
+4. Kiểm tra và sử dụng ứng dụng
+
+1. Thêm sinh viên:
+Chọn mục 1 và nhập thông tin theo yêu cầu. Ví dụ:
+
+id: 1001
+
+tên: Nguyen Van A
+
+địa chỉ: Ha Noi
+
+điểm toán và điểm lý.
+
+
+
+2. Hiển thị danh sách sinh viên:
+Chọn mục 2 để xem danh sách các sinh viên đã nhập.
+
+
+3. Tìm kiếm và xóa sinh viên:
+Nhập id hoặc địa chỉ cần tìm (không phân biệt chữ hoa, chữ thường) để kiểm tra chức năng tìm kiếm.
+Chọn 5 và nhập id của sinh viên muốn xóa.
+
+
+4. Kết thúc chương trình:
+Chọn mục 6 để thoát.
+
+
+
+
+---
+
+Với hướng dẫn trên, bạn đã biết cách tạo dự án Console theo quy tắc đặt tên, cài đặt code theo yêu cầu của đề bài và chạy ứng dụng trong Visual Studio 2022. Nếu có bất kỳ thắc mắc nào thêm về cấu trúc project hoặc lập trình Console trong C#, bạn có thể tham khảo thêm tài liệu Microsoft hoặc các diễn đàn lập trình uy tín.
+
